@@ -137,8 +137,8 @@ def redondear(arreglo):
     return(lita)
 
 
-# baseeeeee
-# optimizar es ejecutar, metodo
+# # baseeeeee
+# # optimizar es ejecutar, metodo
 # class Optimizador(ABC):
 #     def __init__(self, funcion:callable) -> None:
 #         super().__init__()
