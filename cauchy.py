@@ -2,6 +2,8 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+from abc import ABC
+
 
 
 def regla_eliminacion(x1, x2, fx1, fx2, a, b):
@@ -30,6 +32,68 @@ def busquedaDorada(funcion, epsilon, a, b):
     return (w_to_x(aw, a, b)+w_to_x(bw,a,b))/2
 
 
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        a, b = 0, 1
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        return b
+
+
+
+def fibonacciSearch(x, funcion):
+    a = x[0]
+    b = x[-1]
+
+    L = b - a
+
+    n = 7
+    k = 2
+
+    bandera = 0
+
+    # paso 2
+    while (bandera != 1):
+        i = n - k + 2
+        Fi = fibonacci(i)
+
+        j = n + 2
+        Fj = fibonacci(j)
+
+        L_K = (Fi/Fj) * L
+
+        x1 = a + L_K
+        x2 = b - L_K
+
+
+        funcionX1 = funcion(x1)
+        funcionX2 = funcion(x2)
+
+
+        if funcionX1 > funcionX2:
+            a = x1
+
+        elif funcionX1 < funcionX2:
+            b = x2
+
+        elif funcionX1 == funcionX2:
+            a = x1
+            b = x2
+
+
+        if k == n:
+            bandera = 1
+        else:
+            k += 1
+
+    # return x1, x2
+    # if funcion(x1) < funcion(x2):
+    #     return x1
+    # else:
+    #     return x2
+    return a,b
 
 
 
@@ -71,6 +135,30 @@ def redondear(arreglo):
         v = round(valor, 2)
         lita.append(v)
     return(lita)
+
+
+# baseeeeee
+# optimizar es ejecutar, metodo
+# class Optimizador(ABC):
+#     def __init__(self, funcion:callable) -> None:
+#         super().__init__()
+#         self.funcion = funcion
+#     def optimizar():
+# class Cauchy():
+# class GoldenSeacrch():
+#     def __init__(self, x, epsilon, a, b) -> None:
+#         pass
+#     def optimizar():
+# class Fibonacci():
+#     def __init__(self, a, b) -> None:
+#         pass
+#     def optimizar():
+        
+
+
+
+
+
 
 
 
