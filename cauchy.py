@@ -30,6 +30,11 @@ def busquedaDorada(funcion, epsilon, a, b):
     return (w_to_x(aw, a, b)+w_to_x(bw,a,b))/2
 
 
+
+
+
+
+
 def funcion_objetivo(arreglo):
     x = arreglo[0] 
     y = arreglo[1]
@@ -90,6 +95,7 @@ def cauchy(funcion, funcion_objetivo, x, epsilon1, epsilon2, max_iterations, alp
                 return funcion_objetivo(xk - alpha*gradienteX)
             
             alpha = funcion(alpha_calcular,epsilon2, 0.0,1.0)
+            # alpha = funcion(alpha_calcular,funcion_objetivo)
             x_k1 = xk - alpha * gradienteX
             # print(xk,alpha, gradienteX, x_k1)
 
