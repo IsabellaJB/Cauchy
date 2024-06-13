@@ -11,11 +11,12 @@ def regla_eliminacion(x1, x2, fx1, fx2, a, b):
         return x1, b
     if fx1 < fx2:
         return a, x2
-
     return x1, x2
+
 
 def w_to_x(w, a, b):
     return w*(b-a) + a
+
 
 def busquedaDorada(funcion, epsilon, a, b):
     PHI = (1+math.sqrt(5)) / 2 - 1
@@ -32,6 +33,12 @@ def busquedaDorada(funcion, epsilon, a, b):
     return (w_to_x(aw, a, b)+w_to_x(bw,a,b))/2
 
 
+
+
+
+
+
+
 def fibonacci(n):
     if n <= 1:
         return n
@@ -41,59 +48,38 @@ def fibonacci(n):
             a, b = b, a + b
         return b
 
-
-
 def fibonacciSearch(x, funcion):
     a = x[0]
     b = x[-1]
-
     L = b - a
-
     n = 7
     k = 2
-
     bandera = 0
-
     # paso 2
     while (bandera != 1):
         i = n - k + 2
         Fi = fibonacci(i)
-
         j = n + 2
         Fj = fibonacci(j)
-
         L_K = (Fi/Fj) * L
-
         x1 = a + L_K
         x2 = b - L_K
-
-
         funcionX1 = funcion(x1)
         funcionX2 = funcion(x2)
-
-
         if funcionX1 > funcionX2:
             a = x1
-
         elif funcionX1 < funcionX2:
             b = x2
-
         elif funcionX1 == funcionX2:
             a = x1
             b = x2
-
-
         if k == n:
             bandera = 1
         else:
             k += 1
+    return ((a+b)/2)
 
-    # return x1, x2
-    # if funcion(x1) < funcion(x2):
-    #     return x1
-    # else:
-    #     return x2
-    return a,b
+
 
 
 
@@ -104,6 +90,12 @@ def funcion_objetivo(arreglo):
     y = arreglo[1]
     operacion = ((x**2 + y - 11)**2) + ((x + y**2 - 7)**2)
     return operacion
+
+
+
+
+
+
 
 
 def gradiente(funcion, x, delta=0.001):
@@ -121,13 +113,8 @@ def gradiente(funcion, x, delta=0.001):
         derivadas.append(valor_final)
     return derivadas
 
-
-
-
-
 def distancia_origen(vector):
     return np.linalg.norm(vector)
-
 
 def redondear(arreglo):
     lita = []
@@ -136,44 +123,13 @@ def redondear(arreglo):
         lita.append(v)
     return(lita)
 
-
-# # baseeeeee
-# # optimizar es ejecutar, metodo
-# class Optimizador(ABC):
-#     def __init__(self, funcion:callable) -> None:
-#         super().__init__()
-#         self.funcion = funcion
-#     def optimizar():
-# class Cauchy():
-# class GoldenSeacrch():
-#     def __init__(self, x, epsilon, a, b) -> None:
-#         pass
-#     def optimizar():
-# class Fibonacci():
-#     def __init__(self, a, b) -> None:
-#         pass
-#     def optimizar():
-        
-
-
-
-
-
-
-
-
-
 def cauchy(funcion, funcion_objetivo, x, epsilon1, epsilon2, max_iterations, alpha):
-
     terminar = False
     xk = x
     k = 0
     while not terminar:
-
-
         gradienteX = np.array(gradiente(funcion_objetivo,xk))
         distancia = distancia_origen(gradienteX)
-
         if distancia <= epsilon1:
             terminar = True
         elif (k >= max_iterations):
@@ -181,12 +137,8 @@ def cauchy(funcion, funcion_objetivo, x, epsilon1, epsilon2, max_iterations, alp
         else:
             def alpha_calcular(alpha):
                 return funcion_objetivo(xk - alpha*gradienteX)
-            
             alpha = funcion(alpha_calcular,epsilon2, 0.0,1.0)
-            # alpha = funcion(alpha_calcular,funcion_objetivo)
             x_k1 = xk - alpha * gradienteX
-            # print(xk,alpha, gradienteX, x_k1)
-
             if (distancia_origen(x_k1-xk)/distancia_origen(xk)+0.00001) <= epsilon2:
                 terminar = True
             else:
@@ -194,7 +146,6 @@ def cauchy(funcion, funcion_objetivo, x, epsilon1, epsilon2, max_iterations, alp
                 xk = x_k1
     return xk
 
-    
 
 
 max_iterations = 100
