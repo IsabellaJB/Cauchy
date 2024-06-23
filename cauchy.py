@@ -85,18 +85,18 @@ def fibonacciSearch(x, funcion):
 
 
 
+
+
+
+
+
+
+
 def funcion_objetivo(arreglo):
     x = arreglo[0] 
     y = arreglo[1]
     operacion = ((x**2 + y - 11)**2) + ((x + y**2 - 7)**2)
     return operacion
-
-
-
-
-
-
-
 
 def gradiente(funcion, x, delta=0.001):
     derivadas = []
