@@ -130,7 +130,7 @@ def redondear(arreglo):
     return(lita)
 
 
-x = np.array([0.0,0.0])
+x = [0.0,0.0]
 
 
 
